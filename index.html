@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Celestia Overview</title>
+<style>
+  a {
+    text-decoration: none;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  tr, td{
+    padding: 8px;
+    border: 1px solid #dedede;
+    vertical-align: middle;
+  }
+  table tr td img {
+    width: 28px;
+  }
+</style>
+</head>
+  <h1>Overview</h1>
+  <hr>
+
+  <h2>Celestia overview</h2>
+  <table>
+    <tr>
+      <td>Chain ID</td>
+      <td>Pool</td>
+      <td>Supply</td>
+      <td>APR</td>
+      <td>Inflation</td>
+      <td>Bondend Tokens</td>
+      <td>Voting Power</td>
+      <td>Total validators</td>
+      <td>Active validators</td>
+    </tr>
+    <tr>
+      <td>{{ chain_info['chainId']}}</td>
+      <td>{{ chain_info['communityPool']}}</td>
+      <td>{{ chain_info['supply']}}</td>
+      <td>{{ chain_info['apr']}}</td>
+      <td>{{ chain_info['inflation']}}</td>
+      <td>{{ chain_info['bondedTokens']}}</td>
+      <td>{{ chain_info['onlineVotingPower']}}</td>
+      <td>{{ chain_info['totalValidators']}}</td>
+      <td>{{ chain_info['activeValidators']}}</td>
+    </tr>
+  </table>
+
+  <h2>Latest block</h2>
+  <table>
+    <tr>
+      <td>Height</td>
+      <td>Hash</td>
+      <td>Timestamp</td>
+      <td>Operator</td>
+    </tr>
+    <tr>
+      <td>{{ latest_block['height']}}</td>
+      <td>{{ latest_block['hash']}}</td>
+      <td>{{ latest_block['timestamp']}}</td>
+      <td vertical-align="middle"><img src="{{ latest_block['proposer']['avatar']}}">{{ latest_block['proposer']['operatorAddress']}}</td>
+    </tr>
+  </table>
+
+  <h2>Networks</h2>
+  <table>
+    <tr>
+      <td>Title</td>
+      <td>Category</td>
+    </tr>
+    {% for item in net_info %}
+    <tr>
+      <td vertical-align="middle"><a href="{{ item['link']}}" target="_blank"><img src="https://backend.nodes.guru/assets/{{ item['icon']}}"> &nbsp; {{ item['title']}}</a></td>
+      <td>{{ item['sort_category']}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+<body>
+</body>
+</html>
